@@ -84,7 +84,7 @@ module.exports.updateRating = async (req, res) => {
 
 module.exports.fetchMovieDetails = async (req, res) => {
   try {
-    const movie = Movies.findById(req.params.id);
+    const movie = await Movies.findById(req.params.id);
     if (!movie) {
       return res.status(404).json({ message: "Movie not found" });
     }
