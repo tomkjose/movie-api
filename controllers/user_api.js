@@ -10,9 +10,10 @@ module.exports.signIn = async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
-
+    console.log("email backend", email);
+    console.log("password backend", password);
     const user = await Users.findOne({ email: email });
-
+    console.log("user", user);
     if (!user) {
       return res.status(401).json({
         message: "User not registred or Worng password",
@@ -43,7 +44,7 @@ module.exports.signUp = async (req, res) => {
       password: hashedPassword,
     });
     const newUser = user.save();
-    res.status(201).json({ message: "New User Registered Successfully" });
+    res.status(201).json({ newUser: newUser });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
