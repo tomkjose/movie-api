@@ -68,7 +68,7 @@ module.exports.updateRating = async (req, res) => {
     const movie = await Movies.findById(req.params.id);
     const newRating = parseInt(req.body.rating);
     console.log("newRating", newRating);
-    console.log("body", req.body);
+    console.log("type", newRating.typeof);
     movie.rating =
       (movie.rating * movie.ratingCount + newRating) / (movie.ratingCount + 1);
     movie.ratingCount += 1;
