@@ -44,7 +44,7 @@ module.exports.signUp = async (req, res) => {
       password: hashedPassword,
     });
     const newUser = user.save();
-    res.status(201).json({ newUser: newUser });
+    res.status(201).json({ newUser: "New User Registered Successfully" });
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
